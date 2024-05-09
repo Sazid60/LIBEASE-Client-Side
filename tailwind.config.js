@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        sedan : "'Sedan SC', serif"
+        sedan : "'Sedan SC', serif",
+        lob : "'Lobster', sans-serif"
       },
     },
   },
