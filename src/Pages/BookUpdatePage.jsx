@@ -122,6 +122,7 @@ const BookUpdatePage = () => {
                             <option value="History">History</option>
                             <option value="Drama">Drama</option>
                             <option value="Sci-Fi">Sci-Fi</option>
+                            <option value="Poetry">Poetry</option>
                         </select>
                     </div>
                     <div className="mb-4">
