@@ -7,6 +7,7 @@ import MainLayout from "../Layout/MainLayout";
 import AddBook from "../Pages/AddBook";
 import AllBooks from "../Pages/AllBooks";
 import BorrowedBooks from "../Pages/BorrowedBooks";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -28,15 +29,15 @@ const router = createBrowserRouter([
           },
           {
               path: "/add-book",
-              element: <AddBook></AddBook>,
+              element: <PrivateRoutes><AddBook></AddBook></PrivateRoutes>,
           },
           {
               path: "/all-books",
-              element: <AllBooks></AllBooks>,
+              element: <PrivateRoutes><AllBooks></AllBooks></PrivateRoutes>,
           },
           {
               path: "/borrowed-books",
-              element: <BorrowedBooks></BorrowedBooks>,
+              element: <PrivateRoutes><BorrowedBooks></BorrowedBooks></PrivateRoutes>,
           },
         ]
       },
