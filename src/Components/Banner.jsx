@@ -74,9 +74,6 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div className='absolute bottom-10 left-1/2 transform -translate-x-1/2'>
-                <button className='btn btn-sm md:btn-md lg:btn-md font-sedan'>Explore Now</button>
-            </div>
         </div>
     );
 };
