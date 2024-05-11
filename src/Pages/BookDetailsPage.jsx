@@ -40,12 +40,15 @@ const BookDetailsPage = () => {
             staticContent
         }
         // console.log(borrowData)
-        axios.post('http://localhost:5000/add-borrowed-book',borrowedBook)
-        .then(res=>{
-            console.log(res.data)
-            toast.success('Book Borrowed Successfully')
-            navigate(`/categorized-books/${book_category}`)
-        })
+        axios.post('http://localhost:5000/add-borrowed-book', borrowedBook)
+            .then(res => {
+                console.log(res.data)
+                toast.success('Book Borrowed Successfully')
+                navigate(`/categorized-books/${book_category}`)
+            })
+            .catch(() => {
+                toast.error('Already Borrowed This Book')
+            })
     }
 
     return (
@@ -87,7 +90,7 @@ const BookDetailsPage = () => {
                                 </tbody>
                             </table>
                             <div className="flex justify-center md:justify-center lg:justify-start mt-4">
-                                <button className="btn btn-md text-white bg-[#333333] hover:bg-slate-40 " onClick={() => document.getElementById('borrowModal').showModal()}>Borrow Book</button>
+                                <button className="btn btn-md text-white bg-[#333333] hover:bg-slate-40 " onClick={() => document.getElementById('borrowModal').showModal()} disabled={book_quantity === 0}>Borrow Book</button>
 
                                 <dialog id="borrowModal" className="modal modal-bottom sm:modal-middle">
                                     <div className="modal-box">
@@ -98,12 +101,13 @@ const BookDetailsPage = () => {
                                                 <label htmlFor="returnDate" className="font-bold text-gray-700">Return Date:</label>
                                                 <input type="date" id="returnDate" name="returnDate" className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:border-blue-500" required />
                                             </div>
-                                            <button type="submit" className="btn btn-primary">Submit</button>
+                                            <button type="submit"className="btn text-white bg-[#333333]">Submit</button>
                                         </form>
+                                        <p className="text-end">Press "Esc" To Close The Modal</p>
                                     </div>
                                     <Toaster
-                                    position="top-center"
-                                    reverseOrder={false} />
+                                        position="top-center"
+                                        reverseOrder={false} />
                                 </dialog>
 
                             </div>

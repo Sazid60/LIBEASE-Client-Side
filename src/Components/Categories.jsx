@@ -6,12 +6,12 @@ const Categories = ({ category }) => {
     console.log(category)
     const { categoryName, pictureURL } = category
     return (
-        <div className="rounded-xl">
-            <div className="relative shadow-xl">
+        <div className="rounded-2xl">
+            <div className="relative shadow-xl rounded-2xl">
                 <img
                     src={pictureURL}
                     alt=""
-                    className="w-full h-52 object-cover rounded shadow-sm bg-gray-500 dark:bg-gray-500 aspect-square filter brightness-50"
+                    className="w-full h-52 object-cover rounded-2xl shadow-sm bg-gray-500 dark:bg-gray-500 aspect-square filter brightness-50"
                 />
                 <span className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-2xl md:text-3xl lg:text-4xl">
                     {categoryName}
