@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import toast from "react-hot-toast";
+
 
 
 const BorrowedBooks = () => {
@@ -22,6 +22,17 @@ const BorrowedBooks = () => {
                 setLoadedBooks(res.data)
             })
     }
+
+    const handleReturn = (id) => {
+            axios.delete(`http://localhost:5000/delete-borrowed-books/${id}`)
+            .then(res=>{
+                console.log(res.data)
+                
+                toast.success('Thank You For Returning The Book')
+                getData()
+            })
+    }
+
     return (
         <div className="font-sedan">
             <h1 className="text-center text-2xl md:text-2xl lg:text-3xl  font-bold mt-3 font-sedan" >Your Borrowed Books</h1>
@@ -47,7 +58,7 @@ const BorrowedBooks = () => {
 
                                     <div className="flex gap-4  mt-3 items-center justify-center md:justify-start lg:justify-start">
 
-                                        <button className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Return Book</button>
+                                        <button onClick={()=>handleReturn(book.borrow_id)} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Return Book</button>
                                     </div>
                                 </div>
                             </div>)
