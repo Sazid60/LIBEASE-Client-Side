@@ -51,12 +51,12 @@ const router = createBrowserRouter([
           },
           {
               path: "/categorized-books/:categoryName",
-              element: <CategorizedBooks></CategorizedBooks>,
+              element: <PrivateRoutes><CategorizedBooks></CategorizedBooks></PrivateRoutes>,
               loader : ({params}) => fetch(`http://localhost:5000/categorizedBooks/${params.categoryName}`) 
           },
           {
               path: "/book-details/:id",
-              element: <BookDetailsPage></BookDetailsPage>,
+              element: <PrivateRoutes><BookDetailsPage></BookDetailsPage></PrivateRoutes>,
               loader : ({params}) => fetch(`http://localhost:5000/all-books/${params.id}`)
           },
         ]
