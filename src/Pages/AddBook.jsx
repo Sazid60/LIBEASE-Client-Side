@@ -15,13 +15,12 @@ const AddBook = () => {
 
         const book_image = form.book_image.value;
         const book_name = form.book_name.value;
-        const book_quantity = form.book_quantity.value;
+        const book_quantity = parseInt(form.book_quantity.value);
         const book_author = form.book_author.value;
         const book_category = form.book_category.value;
-        const book_rating = form.book_rating.value;
+        const book_rating = parseInt(form.book_rating.value);
         const book_description = form.book_description.value;
         const staticContent = form.staticContent.value
-        const status = "pending"
 
         // console.log(book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent)
 
@@ -34,7 +33,6 @@ const AddBook = () => {
             book_rating,
             book_description,
             staticContent,
-            status,
             adminInfo :{
                 admin_email : user?.email || '',
                 admin_name : user?.displayName ||''

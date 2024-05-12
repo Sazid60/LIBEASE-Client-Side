@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaAngleDown, FaList, FaStar } from "react-icons/fa";
+import { FaAngleDown, FaList} from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import AllBooksCard from "../Components/AllBooksCard";
 import AllBooksTable from "../Components/AllBooksTable";
 
@@ -11,13 +10,14 @@ import AllBooksTable from "../Components/AllBooksTable";
 const AllBooks = () => {
     const [loadedBooks, setLoadedBooks] = useState([])
     const [view, setView] = useState('card')
+    const [filter, setFilter] = useState(null)
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [filter])
 
     const getData = () => {
-        axios('http://localhost:5000/all-books')
+        axios(`http://localhost:5000/all-books?filter=${filter}`)
             .then(res => {
                 console.log(res.data)
                 setLoadedBooks(res.data)
@@ -41,8 +41,9 @@ const AllBooks = () => {
                 <div className="dropdown dropdown-hover">
                     <div tabIndex={0} role="button" className="btn btn-sm m-1 bg-[#333333] text-white rounded-none">Show Available Books<span><FaAngleDown /></span></div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>All</a></li>
-                        <li><a>Yes</a></li>
+                        <li onClick={()=>setFilter(null)}><a>All Books</a></li>
+                        <li onClick={()=>setFilter("available")}><a>Available Books</a></li>
+                        <li onClick={()=>setFilter("stockOut")}><a>Stock Out Books</a></li>
                     </ul>
                 </div>
                 <div className="flex gap-1 items-center justify-center">

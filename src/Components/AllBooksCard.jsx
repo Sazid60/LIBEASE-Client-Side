@@ -19,7 +19,7 @@ const AllBooksCard = ({handleBookDelete, loadedBooks}) => {
 
                     <p className="mt-3 text-xs md:text-xs lg:text-sm font-sedan ">{book.book_description.slice(0, 80)}...</p>
 
-
+                    <p className="text-xs mt-4 text-black"><span className="font-semibold">Added By :</span> {book.adminInfo.admin_name}</p>
 
                     <div className="flex mt-3 items-center flex-col md:flex-col lg:flex-col xl:flex-row justify-between">
                         <h1 className="text-sm mt-2 font-normal text-gray-800  flex justify-center items-center gap-2"> <span className="font-semibold flex justify-center items-center gap-2">Rating : <span className="font-normal">{book.book_rating}</span></span><FaStar className="text-orange-400"></FaStar></h1>

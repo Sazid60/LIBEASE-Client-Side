@@ -2,6 +2,7 @@
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const AllBooksTable = ({ loadedBooks,handleBookDelete }) => {
     return (
 
