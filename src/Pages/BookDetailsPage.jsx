@@ -16,8 +16,8 @@ const BookDetailsPage = () => {
 
     const handleBorrow = e => {
         e.preventDefault()
-        // if (user?.email === adminInfo?.admin_email)
-        //     return toast.error('You Can Not Borrow Your Own Book!')
+        if (user?.email === adminInfo?.admin_email)
+            return toast.error('You Can Not Borrow Your Own Book!')
         const form = e.target;
         const returnDate = form.returnDate.value;
         const borrower_email = user.email;

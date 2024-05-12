@@ -47,19 +47,19 @@ const AllBooks = () => {
 
 
 
-                            <div className="flex mt-3 items-center justify-between">
+                            <div className="flex mt-3 items-center flex-col md:flex-col lg:flex-col xl:flex-row justify-between">
                                 <h1 className="text-sm mt-2 font-normal text-gray-800  flex justify-center items-center gap-2"> <span className="font-semibold flex justify-center items-center gap-2">Rating : <span className="font-normal">{book.book_rating}</span></span><FaStar className="text-orange-400"></FaStar></h1>
                                 <h1 className="text-xs md:text-xs lg:text-sm mt-2 font-normal text-gray-800"> <span className="font-semibold">Quantity : </span>{book.book_quantity}</h1>
                             </div>
 
-                            <div className="flex gap-4  mt-3 items-center justify-center md:justify-end lg:justify-end">
+                            <div className="flex gap-4  mt-3 items-center justify-center xl:justify-end">
 
                                 <Link to={`/book-update/${book._id}`}><button className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Update</button></Link>
 
                                 <button onClick={() => handleBookDelete(book._id)} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 bg-red-600 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Delete</button>
                             </div>
                         </div>
-                    </div>)
+                    </div>).reverse()
                 }
             </div>
 
