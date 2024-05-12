@@ -2,6 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../Components/Banner";
 import Categories from "../Components/Categories";
 import LibraryGides from "../Components/LibraryGides";
+import EventsCalendar from "../Components/EventCalender";
+
+
+
 
 const Home = () => {
     const categories = useLoaderData()
@@ -22,6 +26,8 @@ const Home = () => {
                 </div>
 
             </div>
+            <EventsCalendar></EventsCalendar>
+            
         </div>
     );
 };
