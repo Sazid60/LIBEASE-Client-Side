@@ -3,11 +3,13 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const AddBook = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
 
     const handleAddBook = (e) => {
         e.preventDefault()
@@ -20,7 +22,8 @@ const AddBook = () => {
         const book_category = form.book_category.value;
         const book_rating = parseInt(form.book_rating.value);
         const book_description = form.book_description.value;
-        const staticContent = form.staticContent.value
+        const staticContent = form.staticContent.value;
+        const role = "librarian"
 
         // console.log(book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent)
 
@@ -33,13 +36,14 @@ const AddBook = () => {
             book_rating,
             book_description,
             staticContent,
-            adminInfo :{
-                admin_email : user?.email || '',
-                admin_name : user?.displayName ||''
+            role,
+            adminInfo: {
+                admin_email: user?.email || '',
+                admin_name: user?.displayName || ''
             }
         }
 
-        axios.post('http://localhost:5000/add-book', newBook)
+        axiosSecure.post(`/add-book?email=${user?.email}`, newBook, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 toast.success('Book Added Successfully')

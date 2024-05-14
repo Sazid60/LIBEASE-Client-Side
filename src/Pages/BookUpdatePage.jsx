@@ -3,10 +3,12 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const BookUpdatePage = () => {
     const bookData = useLoaderData()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     
     const { _id, book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent } = bookData
@@ -40,7 +42,7 @@ const BookUpdatePage = () => {
         }
 
         console.log(updatedBook)
-        axios.put(`http://localhost:5000/update/${_id}`, updatedBook)
+        axiosSecure.put(`/update/${_id}`, updatedBook)
             .then(response => {
                 console.log("Book updated:", response.data);
                 toast.success('Book Updated Successfully')

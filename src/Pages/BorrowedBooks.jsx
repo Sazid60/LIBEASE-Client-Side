@@ -2,12 +2,14 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 
 const BorrowedBooks = () => {
 
     const { user } = useContext(AuthContext)
+    const axiosSecure = useAxiosSecure()
 
     const [loadedBooks, setLoadedBooks] = useState([])
 
@@ -16,7 +18,7 @@ const BorrowedBooks = () => {
     }, [user])
 
     const getData = () => {
-        axios(`http://localhost:5000/borrowed-books/${user?.email}`)
+        axiosSecure.get(`/borrowed-books/${user?.email}`)
             .then(res => {
                 console.log(res.data)
                 setLoadedBooks(res.data)
@@ -24,7 +26,7 @@ const BorrowedBooks = () => {
     }
 
     const handleReturn = (id) => {
-            axios.delete(`http://localhost:5000/delete-borrowed-books/${id}`)
+            axiosSecure.delete(`/delete-borrowed-books/${id}`)
             .then(res=>{
                 console.log(res.data)
                 

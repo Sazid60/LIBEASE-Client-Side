@@ -1,30 +1,34 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaAngleDown, FaList} from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
 import AllBooksCard from "../Components/AllBooksCard";
 import AllBooksTable from "../Components/AllBooksTable";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const AllBooks = () => {
+    const { user } = useContext(AuthContext)
     const [loadedBooks, setLoadedBooks] = useState([])
     const [view, setView] = useState('card')
     const [filter, setFilter] = useState(null)
+    const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
         getData()
     }, [filter])
 
     const getData = () => {
-        axios(`http://localhost:5000/all-books?filter=${filter}`)
+        axiosSecure.get(`/all-books?filter=${filter}&email=${user?.email}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setLoadedBooks(res.data)
             })
     }
     const handleBookDelete = (id) => {
-        axios.delete(`http://localhost:5000/delete-books/${id}`)
+        axiosSecure.delete(`/delete-books/${id}`)
             .then(res => {
                 console.log(res.data)
                 toast.success('Book Deleted Successfully')

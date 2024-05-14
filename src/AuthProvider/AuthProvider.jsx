@@ -1,6 +1,8 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile,GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
@@ -10,6 +12,7 @@ const gitHubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const axiosSecure = useAxiosSecure()
 
 
     // Register User
@@ -53,8 +56,27 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log("Observing : ", currentUser)
+
+            // Token Purpose
+            const userEmail = currentUser?.email || user?.email
+            const loggedUser = {email:userEmail}
+
             setUser(currentUser)
             setLoading(false)
+
+            // Token Issuing
+            if (currentUser) {
+                axiosSecure.post('/jwt',loggedUser, {withCredentials:true})
+                    .then(res => {
+                        console.log('Token Response :',res.data)
+                    })
+            }
+            else{
+                axiosSecure.post('/logout',loggedUser, {withCredentials:true})
+                .then(res=>{
+                    console.log(res.data)
+                })
+            }
         })
         return () => {
             unsubscribe();
@@ -63,15 +85,15 @@ const AuthProvider = ({ children }) => {
 
 
     const authInformation = {
-        user, 
-        loading, 
+        user,
+        loading,
         createUser,
-        updateUser, 
-        logInUser, 
+        updateUser,
+        logInUser,
         signOutUser,
         googleLogin,
         gitHubLogin,
-        setUser
+        setUser,
     }
     return (
         <AuthContext.Provider value={authInformation}>

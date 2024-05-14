@@ -2,12 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+// import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const Navbar = () => {
-    const { signOutUser, user } = useContext(AuthContext)
-
+    const { signOutUser, user} = useContext(AuthContext)
+    const axiosSecure = useAxiosSecure()
     const [isDarkMode, setIsDarkMode] = useState(false);
+
+    const [isAdmin, setIsAdmin] = useState(false)
 
 
     const toggleTheme = () => {
@@ -18,6 +22,26 @@ const Navbar = () => {
         const theme = isDarkMode ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", theme);
     }, [isDarkMode]);
+
+    useEffect(() => {
+        const fetchAdminEmail = () => {
+            axiosSecure.get('/admin-email', {
+                withCredentials: true
+            })
+                .then(response => {
+                    const adminEmail = response.data;
+                    if (adminEmail === user.email) {
+                        setIsAdmin(true);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching admin email:', error);
+                });
+        };
+        if (user) {
+            fetchAdminEmail();
+        }
+    }, [user,axiosSecure]);
 
     const handleSignOut = () => {
 
@@ -35,18 +59,21 @@ const Navbar = () => {
                 className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/"}>
                 Home
             </NavLink></li>
+        {user && isAdmin && (
+            <>
+                <li className="mr-2">
+                    <NavLink className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/add-book"}>
+                        Add Book
+                    </NavLink>
+                </li>
 
-        <li className="mr-2">
-            <NavLink className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/add-book"}>
-                Add Book
-            </NavLink>
-        </li>
-
-        <li className="mr-2">
-            <NavLink className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/all-books"}>
-                All Books
-            </NavLink>
-        </li>
+                <li className="mr-2">
+                    <NavLink className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/all-books"}>
+                        All Books
+                    </NavLink>
+                </li>
+            </>
+        )}
 
         <li>
             <NavLink className={({ isActive }) => isActive ? 'btn btn-sm bg-[#e6e1e1]' : 'bg-transparent border-0 btn btn-sm font-normal'} to={"/borrowed-books"}>
@@ -75,6 +102,7 @@ const Navbar = () => {
                     {navLinks}
                 </ul>
             </div>
+
             <div className="navbar-end">
                 {
                     user ?

@@ -3,10 +3,11 @@ import { FaStar } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const BookDetailsPage = () => {
     const loadedBook = useLoaderData()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const { _id, book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent, adminInfo } = loadedBook
 
@@ -40,7 +41,7 @@ const BookDetailsPage = () => {
             staticContent
         }
         // console.log(borrowData)
-        axios.post('http://localhost:5000/add-borrowed-book', borrowedBook)
+        axiosSecure.post('/add-borrowed-book', borrowedBook)
             .then(res => {
                 console.log(res.data)
                 toast.success('Book Borrowed Successfully')
