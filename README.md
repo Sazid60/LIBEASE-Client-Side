@@ -3,11 +3,11 @@
 
 ### Assignment_ID: assignment_category_0008
 
-### Category : Library Management System
+#### Category : Library Management System
 
 #### Website URL: [https://libease-client-b9a11-57399.web.app/](https://libease-client-b9a11-57399.web.app/)
 
-### FOR ADMIN LOGIN
+## FOR ADMIN LOGIN
 #### Admin-Email : shahnawazsazid60@gmail.com
 #### Admin-Password : Phb9A11
 
@@ -19,14 +19,6 @@ LIBEASE is a Library Management System designed with two types of users in mind.
 
 ### Features & Characteristics:
 
-- Home Page: 
+- 
 
 
-
-### NPM Packages Used:
-
-1. [React-Simple-Typewriter](https://www.npmjs.com/package/react-simple-typewriter) : Applied In The Banner Section Which Shows All The Subcategories.
-2. [React-Tooltip](https://react-tooltip.com/) : Used In Navbar Profile Image, When You hover Profile Image It Will Show User Name If Name Is Available.
-3. [Swiper-slider](https://swiperjs.com/) : Applied In Home Page Banner Section Which Changes Images In Infinite Order.
-4. [React-Sweet-Alert](https://sweetalert2.github.io/) : Applied On Successful Art Adding, Deleting a Product, Updating a Product. 
-5. [React-Spinner](https://www.npmjs.com/package/react-spinners) : Added To Show Loading Sate.

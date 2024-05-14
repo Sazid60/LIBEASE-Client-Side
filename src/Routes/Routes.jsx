@@ -48,7 +48,7 @@ const router = createBrowserRouter([
           {
               path: "/book-update/:id",
               element: <PrivateRoutes><BookUpdatePage></BookUpdatePage></PrivateRoutes>,
-              loader : ({params}) => fetch(`https://lib-ease-server-b9-a11.vercel.app/${params.id}`)
+              loader : ({params}) => fetch(`https://lib-ease-server-b9-a11.vercel.app/all-books/${params.id}`)
           },
           {
               path: "/categorized-books/:categoryName",
