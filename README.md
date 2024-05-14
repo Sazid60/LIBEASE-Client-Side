@@ -5,12 +5,10 @@
 
 ### CATEGORY : Library Management System
 
-## ___________________________________________________FOR ADMIN LOGIN__________________________________________________________
+## FOR ADMIN LOGIN
 
-## Admin-Email : shahnawazsazid60@gmail.com
-## Admin-Password : Phb9A11
-
-## ____________________________________________________________________________________________________________________________
+### Admin-Email : shahnawazsazid60@gmail.com
+### Admin-Password : Phb9A11
 
 
 Website URL: [https://libease-client-b9a11-57399.web.app/](https://libease-client-b9a11-57399.web.app/)
