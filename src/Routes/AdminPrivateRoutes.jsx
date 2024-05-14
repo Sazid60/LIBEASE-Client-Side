@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider'; 
-import axios from 'axios';
+
 import { Triangle } from 'react-loader-spinner';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 
+// eslint-disable-next-line react/prop-types
 const AdminPrivateRoutes = ({ children }) => {
     const { user } = useContext(AuthContext); 
     const axiosSecure = useAxiosSecure()

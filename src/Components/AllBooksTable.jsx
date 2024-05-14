@@ -26,6 +26,7 @@ const AllBooksTable = ({ loadedBooks,handleBookDelete }) => {
                         </tr>
                     </thead>
                     {
+                        // eslint-disable-next-line react/prop-types
                         loadedBooks.map(book => <tbody key={book._id}>
                             <tr className="border-b border-opacity-20 ">
                                 <td className="p-1 lg:p-3  max-w-[80px] lg:max-w-full text-left">

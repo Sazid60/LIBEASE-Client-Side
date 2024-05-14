@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 
 
 
+// eslint-disable-next-line react/prop-types
 const Categories = ({ category }) => {
     console.log(category)
+    // eslint-disable-next-line react/prop-types
     const { categoryName, pictureURL,description } = category
     return (
         <div className="rounded-2xl">

@@ -58,14 +58,14 @@ const Login = () => {
 
     return (
         <div className="flex w-full justify-center min-h-[40vh] lg:mb-4">
-            
+
             <div className="hero-content flex-col w-full">
                 <div className="text-center">
                     <h1 className="font-bold text-xl md:text-2xl lg:text-3xl " >Login now!</h1>
                 </div>
-                
+
                 <div className="card w-full lg:w-[40%] bg-white shadow-2xl">
-                
+
                     <form className="card-body w-full pb-2" onSubmit={handleSignIn}>
                         <div className="form-control">
                             <label className="label">
@@ -129,6 +129,12 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
+
+                <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-6 mb-3 font-semibold border border-black p-3" ><span className="font-sedan text-red-600 text-2xl">To Get All Routes Access Please Login Using</span> <br />
+                    Admin-Email : <span className="text-bold font-semibold text-red-600"> shahnawazsazid60@gmail.com</span>
+                    <br />
+                    Admin-Password : <span className="font-semibold text-red-600">Phb9A11</span>
+                </p>
             </div>
         </div >
     );

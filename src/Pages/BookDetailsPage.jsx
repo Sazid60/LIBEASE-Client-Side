@@ -104,7 +104,7 @@ const BookDetailsPage = () => {
                                             </div>
                                             <button type="submit"className="btn text-white bg-[#333333]">Submit</button>
                                         </form>
-                                        <p className="text-end">Press "Esc" To Close The Modal</p>
+                                        <p className="text-end">Press `Esc` To Close The Modal</p>
                                     </div>
                                     <Toaster
                                         position="top-center"
