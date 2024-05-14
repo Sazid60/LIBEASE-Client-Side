@@ -86,14 +86,14 @@ const BookDetailsPage = () => {
                                     </tr>
                                     <tr>
                                         <td className="font-bold text-left border border-solid border-gray-300 px-4 py-2">Context</td>
-                                        <td className="border border-solid border-gray-300 px-4 py-2">{staticContent}</td>
+                                        <td className="border border-solid border-gray-300 px-4 py-2 text-sm font-lob">{staticContent}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div className="flex justify-center md:justify-center lg:justify-start mt-4">
                                 <button className="btn btn-md text-white bg-[#333333] hover:bg-slate-40 " onClick={() => document.getElementById('borrowModal').showModal()} disabled={book_quantity === 0}>Borrow Book</button>
 
-                                <dialog id="borrowModal" className="modal modal-bottom sm:modal-middle">
+                                <dialog id="borrowModal" className="modal modal-middle">
                                     <div className="modal-box">
                                         <h3 className="font-bold text-lg">Borrow Book</h3>
                                         <p className="py-4">Please select a return date:</p>
