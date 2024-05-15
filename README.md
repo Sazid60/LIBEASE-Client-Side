@@ -41,8 +41,8 @@ LIBEASE is a Library Management System serving to two types of users: random use
 #### Routes And Data Protection
 - All pages except the home page require login.
 - All Books route data have been protected by JWT token, 
-- Problematic token do not allow to access all books data.
-- Problematic token prevents admin to do add, update and delete.
+- Problematic token prevents admin to do add, update and delete operation.
+- Problematic token Logs Out User.
 
 
 
