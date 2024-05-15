@@ -28,7 +28,7 @@ LIBEASE is a Library Management System serving to two types of users: random use
 - On Borrowed books page Click on the "Return Book" button for each book to return it.
 - Borrowing & Returning Books Changes the available Book Quantity.
 
-#### Routes For Admin/LIBRARIAN User
+#### Routes For Admin/Librarian User
 #### To Get All Routes & Operation Access Login Using Admin/LIBRARIAN Email & Password
 ##### Admin/Librarian-Email : shahnawazsazid60@gmail.com
 ##### Admin/Librarian-Password : Phb9A11

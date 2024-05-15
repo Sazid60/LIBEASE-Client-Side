@@ -43,8 +43,6 @@ const BorrowedBooks = () => {
                 loadedBooks.length <= 0 ?
                     <div className=" flex justify-center items-center h-60">
                         <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-2 mb-3 font-sedan font-extrabold" >You Have Not Borrowed Any Book Yet... 
-                        <br />
-                        <span className="text-sm text-red-600">Reminder: Admin Can Not Borrow His Own Added Books.... If You Are Using Admin Email, please Logout and Try Different Email To Borrow Books </span>
                         </p>
                     </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 mt-4 ">
 
