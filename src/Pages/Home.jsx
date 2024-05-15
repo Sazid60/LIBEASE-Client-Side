@@ -28,9 +28,9 @@ const Home = () => {
             </div>
             <EventsCalendar></EventsCalendar>
             <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-6 mb-3 font-semibold border border-black p-3" ><span className="font-sedan text-red-600 text-2xl">To Get All Routes Access Please Login Using</span> <br />
-            Admin-Email : <span className="text-bold font-semibold text-red-600"> shahnawazsazid60@gmail.com</span> 
+            Admin/Librarian-Email : <span className="text-bold font-semibold text-red-600"> shahnawazsazid60@gmail.com</span> 
             <br />
-            Admin-Password : <span className="font-semibold text-red-600">Phb9A11</span>
+            Admin/Librarian-Password : <span className="font-semibold text-red-600">Phb9A11</span>
              </p>
             
         </div>
