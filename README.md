@@ -8,11 +8,11 @@
 #### Website URL: [https://libease-client-b9a11-57399.web.app/](https://libease-client-b9a11-57399.web.app/)
 
 
-## ADMIN LOGIN DETAILS
-#### Admin-Email : shahnawazsazid60@gmail.com
-#### Admin-Password : Phb9A11
+## ADMIN/LIBRARIAN LOGIN DETAILS
+#### Admin/LIBRARIAN-Email : shahnawazsazid60@gmail.com
+#### Admin/LIBRARIAN-Password : Phb9A11
 
-##### USE ADMIN EMAIL AND PASSWORD TO GET ALL ROUTES & OPERATION ACCESS
+##### USE ADMIN/LIBRARIAN EMAIL AND PASSWORD TO GET ALL ROUTES & OPERATION ACCESS
 
 
 #### Overview:
@@ -28,10 +28,10 @@ LIBEASE is a Library Management System serving to two types of users: random use
 - On Borrowed books page Click on the "Return Book" button for each book to return it.
 - Borrowing & Returning Books Changes the available Book Quantity.
 
-#### Routes For Admin User
-#### To Get All Routes & Operation Access Login Using Admin Email & Password
-##### Admin-Email : shahnawazsazid60@gmail.com
-##### Admin-Password : Phb9A11
+#### Routes For Admin/LIBRARIAN User
+#### To Get All Routes & Operation Access Login Using Admin/LIBRARIAN Email & Password
+##### Admin/LIBRARIAN-Email : shahnawazsazid60@gmail.com
+##### Admin/LIBRARIAN-Password : Phb9A11
 
 - When an admin logs in this enables all books and add books routes.
 - Only an Admin can add books in different categories and added books will be shown in All Books page.
