@@ -1,17 +1,23 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider, getAuth } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import auth from "../Firebase/firebase.config";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
+// import auth from "../Firebase/firebase.config";
+// import useAxiosSecure from "../Hooks/useAxiosSecure";
+import app from '../Firebase/firebase.config';
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
+const auth = getAuth(app)
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
+    
+
+
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const axiosSecure = useAxiosSecure()
+    // const axiosSecure = useAxiosSecure()
 
 
     // Register User
@@ -65,13 +71,13 @@ const AuthProvider = ({ children }) => {
 
             // Token Issuing
             if (currentUser) {
-                axiosSecure.post('/jwt',loggedUser, {withCredentials:true})
+                axios.post('https://lib-ease-server-b9-a11.vercel.app/jwt',loggedUser, {withCredentials:true})
                     .then(res => {
                         console.log('Token Response :',res.data)
                     })
             }
             else{
-                axiosSecure.post('/logout',loggedUser, {withCredentials:true})
+                axios.post('https://lib-ease-server-b9-a11.vercel.app/logout',loggedUser, {withCredentials:true})
                 .then(res=>{
                     console.log(res.data)
                 })
@@ -80,7 +86,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             unsubscribe();
         }
-    }, [])
+    }, [user?.email])
 
 
     const authInformation = {
