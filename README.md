@@ -37,8 +37,6 @@ LIBEASE is a Library Management System serving to two types of users: random use
 - Only an Admin can add books in different categories and added books will be shown in All Books page.
 - In all books page an admin can do update and delete operation which promptly responses.
 
-##### Reminder :
-- Admin can not borrow his own added books but all users except admin can borrow and return books.
 
 #### Routes And Data Protection
 - All pages except the home page require login.
