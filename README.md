@@ -9,8 +9,8 @@
 
 
 ## ADMIN/LIBRARIAN LOGIN DETAILS
-#### Admin/LIBRARIAN-Email : shahnawazsazid60@gmail.com
-#### Admin/LIBRARIAN-Password : Phb9A11
+#### Admin/Librarian-Email : shahnawazsazid60@gmail.com
+#### Admin/Librarian-Password : Phb9A11
 
 ##### USE ADMIN/LIBRARIAN EMAIL AND PASSWORD TO GET ALL ROUTES & OPERATION ACCESS
 
@@ -30,8 +30,8 @@ LIBEASE is a Library Management System serving to two types of users: random use
 
 #### Routes For Admin/LIBRARIAN User
 #### To Get All Routes & Operation Access Login Using Admin/LIBRARIAN Email & Password
-##### Admin/LIBRARIAN-Email : shahnawazsazid60@gmail.com
-##### Admin/LIBRARIAN-Password : Phb9A11
+##### Admin/Librarian-Email : shahnawazsazid60@gmail.com
+##### Admin/Librarian-Password : Phb9A11
 
 - When an admin logs in this enables all books and add books routes.
 - Only an Admin can add books in different categories and added books will be shown in All Books page.
