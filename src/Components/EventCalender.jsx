@@ -1,24 +1,39 @@
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const EventsCalendar = () => {
-    const events = [
-        {
-            "id": 1,
-            "title": "Literary Discussion Group",
-            "date": "2024-06-01",
-            "time": "14:30",
-            "location": "Library Auditorium",
-            "description": "Discussing 'Pride and Prejudice'",
-        },
-        {
-            "id": 2,
-            "title": "Author Meetup: Maria Johnson",
-            "date": "2024-06-10",
-            "time": "17:30",
-            "location": "Library Auditorium",
-            "description": "Meet Your Loved author!",
-        },
-    ]
+    const axiosSecure = useAxiosSecure()
+    const [events, setEvents] = useState([])
+    // const events = [
+    //     {
+    //         "id": 1,
+    //         "title": "Literary Discussion Group",
+    //         "date": "2024-06-01",
+    //         "time": "14:30",
+    //         "location": "Library Auditorium",
+    //         "description": "Discussing 'Pride and Prejudice'",
+    //     },
+    //     {
+    //         "id": 2,
+    //         "title": "Author Meetup: Maria Johnson",
+    //         "date": "2024-06-10",
+    //         "time": "17:30",
+    //         "location": "Library Auditorium",
+    //         "description": "Meet Your Loved author!",
+    //     },
+    // ]
 
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = () => {
+        axiosSecure.get(`/events`)
+            .then(res => {
+                console.log('events :', res.data)
+                setEvents(res.data)
+            })
+    }
 
     return (
 
@@ -28,7 +43,7 @@ const EventsCalendar = () => {
             <section className="grid grid-cols-1 gap-4  lg:grid-cols-2 justify-center items-center md:px-24 lg:px-20 xl-px-28">
                 {
 
-                    events.map(event => <div key={event.id} className="p-4 border rounded-lg shadow-2xl ">
+                    events.map(event => <div key={event._id} className="p-4 border rounded-lg shadow-2xl ">
                         <div className="flex  justify-between ">
                             <div className="lg:p-4 w-[70%] flex flex-col justify-center">
                                 <h3 className="text-xs lg:text-md xl:text-lg font-semibold mb-2">{event.title}</h3>
