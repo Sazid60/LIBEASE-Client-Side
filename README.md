@@ -54,6 +54,7 @@ React.js | HTML5 | Tailwind CSS | Daisy UI | Node.js | Express.js | MongoDB | JW
 - Create a .env file in the root directory of the project and add the required fields.
 - Customize .env variables according to your specific environment setup.
 - Ensure Node.js and npm (or yarn) are installed on your system.
+- For Further Guidence You Can Connect me and ask any queries.
 
 
 
