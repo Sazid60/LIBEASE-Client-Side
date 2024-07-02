@@ -48,7 +48,7 @@ LIBEASE is a Library Management System serving to two types of users: random use
   ### Technologies used : 
 React.js | HTML5 | Tailwind CSS | Daisy UI | Node.js | Express.js | MongoDB | JWT | Firebase
 
-  ### Instructiosn For Locally Running The Project :
+  ### Instructiosn For Locally Running The Project:
 - Clone The Repository " git clone <repository-url> "
 - Install All The Dependecies " npm intall "
 - Create a .env file in the root directory of the project and add the required fields.
