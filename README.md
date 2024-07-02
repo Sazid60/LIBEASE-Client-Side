@@ -45,7 +45,7 @@ LIBEASE is a Library Management System serving to two types of users: random use
 - Problematic token prevents admin to do add, update and delete operation.
 - Problematic token Logs Out User.
 
-  ### Technologies used : 
+### Technologies used : 
 React.js | HTML5 | Tailwind CSS | Daisy UI | Node.js | Express.js | MongoDB | JWT | Firebase
 
   ### Instructiosn For Locally Running The Project:
