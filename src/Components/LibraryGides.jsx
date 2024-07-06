@@ -3,7 +3,7 @@
 const LibraryGides = () => {
     return (
 
-        <div className="mt-6 mb-6 font-sedan">
+        <div className="mt-6 mb-6 font-sedan container mx-auto">
             <h1 className="text-center text-2xl md:text-2xl lg:text-3xl  font-bold mt-3 font-sedan" >Library Facilities</h1>
             <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-2 mb-4 font-sedan" >Explore our state-of-the-art facilities equipped with modern amenities for an enhanced learning experience. </p>
             <div className="flex flex-col md:flex-col lg:flex-row  justify-center md:justify-center lg:justify-between items-center md:px-10 lg:px-28">
