@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const AllBooksTable = ({ loadedBooks,handleBookDelete }) => {
     return (
 
-        <div className="container p-2 mx-auto sm:p-4">
+        <div className=" p-2 sm:p-4">
             <div className="overflow-x-auto">
                 <table className="min-w-full text-[7px] md:text-[10px] lg:text-sm text-center">
                     <colgroup>
