@@ -15,7 +15,7 @@ const Categories = ({ category }) => {
                     alt=""
                     className="w-full h-32 md:h-36 lg:h-52 object-cover rounded-2xl shadow-sm bg-gray-500 dark:bg-gray-500 aspect-square filter brightness-50"
                 />
-                <span className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-2xl md:text-3xl lg:text-4xl">
+                <span className="absolute inset-0 flex flex-col items-center justify-center text-center text-white font-bold text-2xl md:text-3xl lg:text-4xl">
                     {categoryName}
                     <span className="font-normal text-xs md:text-sm lg:text-lg mt-2">{description}</span>
                     <Link to={`/categorized-books/${categoryName}`}><button className="btn  btn-sm mt-4 bg-[#333333] text-white">View Books</button></Link>
