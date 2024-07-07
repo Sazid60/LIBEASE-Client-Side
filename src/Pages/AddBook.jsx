@@ -53,7 +53,7 @@ const AddBook = () => {
         <div>
             <h1 className="text-center text-2xl md:text-2xl lg:text-3xl  font-bold mt-3 font-sedan" >Add Your Books</h1>
             <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-2 mb-3 font-sedan" >Bring your personal library to life for book lovers!</p>
-            <div className="w-full mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div className="w-full mx-auto bg-white  xl:px-8 pt-6 pb-8 mb-4">
                 <form onSubmit={handleAddBook} className="grid grid-cols-2 gap-4">
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2 font-sedan">
