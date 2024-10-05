@@ -6,7 +6,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const AddBook = () => {
-    const { user } = useContext(AuthContext)
+    const { user, theme } = useContext(AuthContext)
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
 
@@ -53,32 +53,32 @@ const AddBook = () => {
         <div>
             <h1 className="text-center text-2xl md:text-2xl lg:text-3xl  font-bold mt-3 font-sedan" >Add Your Books</h1>
             <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-2 mb-3 font-sedan" >Bring your personal library to life for book lovers!</p>
-            <div className="w-full mx-auto bg-white  xl:px-8 pt-6 pb-8 mb-4">
+            <div className={`w-full container mx-auto rounded-md bg-white  xl:px-8 pt-6 pb-8 mb-4 ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"}`}>
                 <form onSubmit={handleAddBook} className="grid grid-cols-2 gap-4">
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan">
+                        <label className="block   font-bold mb-2 font-sedan">
                             Book Image:
                         </label>
                         <input
                             type="text"
                             name="book_image"
-                            className="shadow appearance-none border border-black bg-white   rounded w-full py-2 px-3 text-gray-700 "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3   "
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Book Name:
                         </label>
                         <input
                             type="text"
                             name="book_name"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Quantity:
                         </label>
                         <input
@@ -86,28 +86,28 @@ const AddBook = () => {
                             name="book_quantity"
                             min="0"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Author Name:
                         </label>
                         <input
                             type="text"
                             name="book_author"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Category:
                         </label>
                         <select
                             name="book_category"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         >
                             <option value="">Select Category</option>
                             <option value="Novel">Novel</option>
@@ -119,7 +119,7 @@ const AddBook = () => {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Rating (1-5):
                         </label>
                         <input
@@ -129,39 +129,40 @@ const AddBook = () => {
                             max="5"
                             step="0.1"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         />
                     </div>
                     <div className="mb-4 col-span-2">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan">
+                        <label className="block   font-bold mb-2 font-sedan">
                             Short Description:
                         </label>
                         <textarea
                             name="book_description"
                             rows="4"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3     "
                         ></textarea>
                     </div>
                     <div className="mb-4 col-span-2">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Texts about the Book:
                         </label>
                         <textarea
                             name="staticContent"
                             rows="1"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3    "
                         ></textarea>
                     </div>
                     <div className="col-span-2 flex items-center justify-center">
                         <button
                             type="submit"
-                            className="text-white bg-[#333333] hover:bg-slate-40 font-bold py-2 px-4 rounded font-sedan w-full"
+                            className={`font-bold py-2 px-4 rounded font-sedan w-full text-white uppercase transition-colors duration-300 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700`}
                         >
                             Add Book
                         </button>
                     </div>
+
                 </form>
             </div>
 

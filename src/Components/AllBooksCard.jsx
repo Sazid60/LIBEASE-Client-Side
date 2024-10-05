@@ -15,8 +15,7 @@ const AllBooksCard = ({ handleBookDelete, loadedBooks }) => {
                 loadedBooks.map(book => (
                     <div
                         key={book._id}
-                        className={`flex max-w-md flex-col justify-center items-center md:flex-row lg:flex-row overflow-hidden hover:-translate-y-2 duration-700 hover:shadow-2xl 
-                            ${theme === "light" ? "bg-white" : "bg-[#444746] text-white"} rounded-lg shadow-lg p-3`}
+                        className={`flex max-w-md flex-col justify-center items-center md:flex-row lg:flex-row overflow-hidden hover:-translate-y-2 duration-700 hover:shadow-2xl ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"} rounded-lg shadow-lg p-3`}
                     >
                         <div className="w-1/3 flex justify-center items-center">
                             <img src={book.book_image} alt="" className="h-44 w-28 rounded-lg shadow-2xl shadow-slate-600" />
@@ -32,7 +31,7 @@ const AllBooksCard = ({ handleBookDelete, loadedBooks }) => {
                                 <span className="font-semibold">Category: </span>{book.book_category}
                             </h1>
 
-                            <p className="mt-3 text-xs md:text-xs lg:text-sm font-sedan text-gray-800">{book.book_description.slice(0, 80)}...</p>
+                            <p className="mt-3 text-xs md:text-xs lg:text-sm font-sedan text-gray-600">{book.book_description.slice(0, 80)}...</p>
 
                             <p className="text-xs mt-4 text-black">
                                 <span className="font-semibold">Added By: </span>{book.adminInfo.admin_name}

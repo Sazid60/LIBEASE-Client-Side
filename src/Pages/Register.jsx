@@ -9,7 +9,7 @@ const Register = () => {
     const [success, setSuccess] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
-    const { createUser, updateUser, googleLogin, user, setUser } = useContext(AuthContext)
+    const { createUser, updateUser, googleLogin, user, setUser, theme } = useContext(AuthContext)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -89,32 +89,32 @@ const Register = () => {
                 <div className="text-center">
                     <h1 className=" font-bold text-xl md:text-2xl lg:text-3xl mb-2 " >Register now!</h1>
                 </div>
-                <div className="card w-full lg:w-[40%] bg-white shadow-2xl" >
+                <div className={`card w-full lg:w-[40%] bg-white shadow-2xl ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"}`} >
                     <form className="card-body w-full pb-2" onSubmit={handleRegister}>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-gray-700 text-xs">Name</span>
+                                <span className="label-text   text-xs">Name</span>
                             </label>
-                            <input type="text" placeholder="Your Name" name="name" className="input input-bordered bg-transparent border-gray-300 text-gray-700  " required />
+                            <input type="text" placeholder="Your Name" name="name" className="input input-bordered  border-gray-300    " required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-xs text-gray-700 ">Email</span>
+                                <span className="label-text text-xs   ">Email</span>
                             </label>
-                            <input type="email" placeholder="Email" name="email" className=" text-gray-700 bg-transparent border-gray-300 input input-bordered" required />
+                            <input type="email" placeholder="Email" name="email" className="    border-gray-300 input input-bordered" required />
                         </div>
                         <div className="form-control" >
                             <label className="label">
-                                <span className="label-text text-xs text-gray-700 ">PhotoURL</span>
+                                <span className="label-text text-xs   ">PhotoURL</span>
                             </label>
-                            <input type="text" placeholder="Photo URL" name="photoUrl" className=" text-gray-700 bg-transparent border-gray-300  input input-bordered " required />
+                            <input type="text" placeholder="Photo URL" name="photoUrl" className="    border-gray-300  input input-bordered " required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-xs text-gray-700 ">Password</span>
+                                <span className="label-text text-xs   ">Password</span>
                             </label>
                             <div className="relative w-full">
-                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered border-gray-300 w-full text-gray-700 bg-transparent" required />
+                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered border-gray-300 w-full   " required />
                                 <div onClick={handleShowPassword} className="absolute top-[39%] left-[85%] md:left-[88%] lg:left-[89%]" >
                                     {
                                         showPassword  ? <FaRegEyeSlash /> : <FaRegEye />
@@ -129,15 +129,15 @@ const Register = () => {
                             }
                         </div>
                         <div className="form-control mt-2">
-                            <button className="btn  bg-[#333333] border-0 text-white">Register</button>
+                            <button className="btn text-white uppercase transition-colors duration-300 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Register</button>
                         </div>
                         <div className="mt-2 text-center">
-                            <p className="text-gray-700 text-sm">Already Have Account ? <Link className="text-blue-600 font-semibold" to={"/login"}>Login</Link> </p>
+                            <p className="  text-sm">Already Have Account ? <Link className="text-blue-600 font-semibold" to={"/login"}>Login</Link> </p>
                         </div>
                     </form>
-                    <div className="divider text-gray-700" >Continue With</div>
+                    <div className="divider  " >Continue With</div>
                     <div className="flex justify-center items-center  mb-6 pb-0">
-                        <div onClick={() => handleSocialLogin(googleLogin)} className='flex cursor-pointer items-center justify-center  text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                        <div onClick={() => handleSocialLogin(googleLogin)} className='flex cursor-pointer items-center justify-center transition-colors duration-300 transform border rounded-lg hover:bg-gray-50 '>
                             <div className='px-4 py-2'>
                                 <svg className='w-6 h-6' viewBox='0 0 40 40'>
                                     <path

@@ -1,21 +1,23 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 const BookUpdatePage = () => {
     const bookData = useLoaderData()
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    
+
     const { _id, book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent } = bookData
 
     const [category, setCategory] = useState(book_category)
+    const {theme} = useContext(AuthContext)
 
 
-    const handleBookUpdate = e =>{
+    const handleBookUpdate = e => {
         e.preventDefault()
 
         const form = e.target
@@ -29,7 +31,7 @@ const BookUpdatePage = () => {
         const book_description = form.book_description.value;
         const staticContent = form.staticContent.value
 
-        const updatedBook= {
+        const updatedBook = {
             book_image,
             book_name,
             book_quantity,
@@ -50,40 +52,40 @@ const BookUpdatePage = () => {
             .catch(error => {
                 console.error("Error updating book:", error);
             });
-    } 
+    }
     return (
         <div>
             <h1 className="text-center text-2xl md:text-2xl lg:text-3xl  font-bold mt-3 font-sedan" >Update Your Books</h1>
             <p className="text-center  text-xs md:text-lg lg:text-lg max-w-2xl mx-auto mt-2 mb-3 font-sedan" >This Lets You To Update The Added Books. Refine the Uploads</p>
-            <div className="max-w-3xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div className={`max-w-3xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"}`}>
 
                 <form onSubmit={handleBookUpdate} className="grid grid-cols-2 gap-4">
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan">
+                        <label className="block font-bold mb-2 font-sedan">
                             Book Image:
                         </label>
                         <input
                             type="text"
                             name="book_image"
-                            className="shadow appearance-none border border-black bg-white  rounded w-full py-2 px-3 text-gray-700 "
+                            className="shadow appearance-none border border-black rounded w-full py-2 px-3 "
                             defaultValue={book_image}
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block font-bold mb-2 font-sedan" >
                             Book Name:
                         </label>
                         <input
                             type="text"
                             name="book_name"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={book_name}
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Quantity:
                         </label>
                         <input
@@ -91,31 +93,31 @@ const BookUpdatePage = () => {
                             name="book_quantity"
                             min="0"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={book_quantity}
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Author Name:
                         </label>
                         <input
                             type="text"
                             name="book_author"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={book_author}
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Category:
                         </label>
                         <select
                             name="book_category"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
-                            defaultValue={book_category} onChange={(e)=>setCategory(e.target.value)}
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
+                            defaultValue={book_category} onChange={(e) => setCategory(e.target.value)}
                         >
                             <option value="">Select Category</option>
                             <option value="Novel">Novel</option>
@@ -127,7 +129,7 @@ const BookUpdatePage = () => {
                         </select>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Rating (1-5):
                         </label>
                         <input
@@ -137,38 +139,38 @@ const BookUpdatePage = () => {
                             max="5"
                             step="0.1"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={book_rating}
                         />
                     </div>
                     <div className="mb-4 col-span-2">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan">
+                        <label className="block   font-bold mb-2 font-sedan">
                             Short Description:
                         </label>
                         <textarea
                             name="book_description"
                             rows="4"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={book_description}
                         ></textarea>
                     </div>
                     <div className="mb-4 col-span-2">
-                        <label className="block text-gray-700 font-bold mb-2 font-sedan" >
+                        <label className="block   font-bold mb-2 font-sedan" >
                             Texts about the Book:
                         </label>
                         <textarea
                             name="staticContent"
                             rows="1"
                             required
-                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3 text-gray-700 bg-white  "
+                            className="shadow appearance-none border border-black  rounded w-full py-2 px-3"
                             defaultValue={staticContent}
                         ></textarea>
                     </div>
                     <div className="col-span-2 flex items-center justify-center">
                         <button
                             type="submit"
-                            className="text-white bg-[#333333] hover:bg-slate-40 font-bold py-2 px-4 rounded font-sedan w-full"
+                            className={`font-bold py-2 px-4 rounded font-sedan w-full text-white uppercase transition-colors duration-300 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700`}
                         >
                             Update Book
                         </button>

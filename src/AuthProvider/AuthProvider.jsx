@@ -13,7 +13,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [theme, setTheme] = useState(localStorage.getItem("theme"));
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light"); 
 
     // Save theme to local storage whenever it changes
     useEffect(() => {

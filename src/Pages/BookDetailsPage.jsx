@@ -9,11 +9,12 @@ const BookDetailsPage = () => {
     const loadedBook = useLoaderData()
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
+    
     const { _id, book_image, book_name, book_quantity, book_author, book_category, book_rating, book_description, staticContent, adminInfo } = loadedBook
 
     console.log(adminInfo)
 
-    const { user } = useContext(AuthContext)
+    const { user,theme } = useContext(AuthContext)
 
     const handleBorrow = e => {
         e.preventDefault()
@@ -53,8 +54,8 @@ const BookDetailsPage = () => {
     }
 
     return (
-        <div className="container mt-4 mx-auto font-sedan rounded-lg shadow-xl border-2">
-            <div className="flex flex-col-reverse md:lex-col-reverse lg:flex-row justify-center items-center gap-6  p-3 md:p-4 lg:p-8">
+        <div className="container mt-4 mx-auto font-sedan rounded-md shadow-xl border">
+            <div className={`flex flex-col-reverse md:lex-col-reverse lg:flex-row justify-center items-center gap-6  p-3 md:p-4 lg:p-8 ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"}`}>
                 <div className="w-full  md:pr-4">
                     <div className="w-auto">
                         <div>
@@ -91,7 +92,7 @@ const BookDetailsPage = () => {
                                 </tbody>
                             </table>
                             <div className="flex justify-center md:justify-center lg:justify-start mt-4">
-                                <button className="btn btn-md text-white bg-[#333333] hover:bg-slate-40 " onClick={() => document.getElementById('borrowModal').showModal()} disabled={book_quantity === 0}>Borrow Book</button>
+                                <button className="btn btn-md font-sedan text-white uppercase transition-colors duration-300 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 " onClick={() => document.getElementById('borrowModal').showModal()} disabled={book_quantity === 0}>Borrow Book</button>
 
                                 <dialog id="borrowModal" className="modal modal-middle">
                                     <div className="modal-box">
@@ -102,7 +103,7 @@ const BookDetailsPage = () => {
                                                 <label htmlFor="returnDate" className="font-bold text-gray-700">Return Date:</label>
                                                 <input type="date" id="returnDate" name="returnDate" className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:border-blue-500" required />
                                             </div>
-                                            <button type="submit"className="btn text-white bg-[#333333]">Submit</button>
+                                            <button type="submit"className="btn text-white uppercase transition-colors duration-300 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Submit</button>
                                         </form>
                                         <p className="text-end">Press `Esc` To Close The Modal</p>
                                     </div>

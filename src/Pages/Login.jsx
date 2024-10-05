@@ -10,7 +10,7 @@ const Login = () => {
     const [success, setSuccess] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
-    const { logInUser, googleLogin } = useContext(AuthContext)
+    const { logInUser, googleLogin, theme} = useContext(AuthContext)
     const location = useLocation()
 
     const navigate = useNavigate()
@@ -57,28 +57,28 @@ const Login = () => {
     }
 
     return (
-        <div className="flex w-full justify-center min-h-[40vh] lg:mb-4">
+        <div className={`flex w-full justify-center min-h-[40vh] lg:mb-4`}>
 
             <div className="hero-content flex-col w-full">
                 <div className="text-center">
                     <h1 className="font-bold text-xl md:text-2xl lg:text-3xl " >Login now!</h1>
                 </div>
 
-                <div className="card w-full lg:w-[40%] shadow-2xl">
+                <div className={`card w-full lg:w-[40%] shadow-2xl ${theme === "light" ? "bg-white" : "bg-[#313332] text-white"}`}>
 
                     <form className="card-body w-full pb-2" onSubmit={handleSignIn}>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-sm text-gray-700 ">Email</span>
+                                <span className="label-text text-sm   ">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="Email" className="input input-bordered bg-transparent border-gray-300 text-gray-700" required />
+                            <input type="email" name="email" placeholder="Email" className="input input-bordered  border-gray-300" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-sm text-gray-700 ">Password</span>
+                                <span className="label-text text-sm">Password</span>
                             </label>
                             <div className="relative w-full">
-                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered border-gray-300 text-gray-700 bg-transparent  w-full " required />
+                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered border-gray-300  w-full " required />
                                 <div onClick={handleShowPassword} className="absolute top-[39%] left-[85%] md:left-[88%] lg:left-[89%]" >
                                     {
                                         showPassword ? <FaRegEyeSlash /> : <FaRegEye />
@@ -93,15 +93,15 @@ const Login = () => {
                             }
                         </div>
                         <div className="form-control mt-2" >
-                            <button className="btn text-white bg-[#333333] border-0 ">Login</button>
+                            <button className="btn text-white uppercase transition-colors duration-300 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Login</button>
                         </div>
                         <div className="mt-2 text-center">
-                            <p className="text-sm text-gray-700 ">Do Not Have Account ? <Link className="text-blue-600 font-semibold" to={"/register"} state={location.state}>Register</Link> </p>
+                            <p className="text-sm   ">Do Not Have Account ? <Link className="text-blue-600 font-semibold" to={"/register"} state={location.state}>Register</Link> </p>
                         </div>
                     </form>
-                    <div className="divider text-gray-700">Continue With</div>
+                    <div className="divider  ">Continue With</div>
                     <div className="flex justify-center items-center mb-6 pb-0">
-                        <div onClick={() => handleSocialLogin(googleLogin)} className='flex cursor-pointer items-center justify-center  text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                        <div onClick={() => handleSocialLogin(googleLogin)} className='flex cursor-pointer items-center justify-center transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                             <div className='px-4 py-2'>
                                 <svg className='w-6 h-6' viewBox='0 0 40 40'>
                                     <path

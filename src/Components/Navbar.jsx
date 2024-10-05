@@ -112,14 +112,14 @@ const Navbar = () => {
                         user ?
                             <div className="flex items-center gap-2 md:gap-2 lg:gap-4">
                                 <div data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} data-tooltip-place="left">
-                                    <img className="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10 border rounded-full " src={user.photoURL || "/Capture.PNG"} alt="" />
+                                    <img className="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10 border-2 border-yellow-600 rounded-full " src={user.photoURL || "/Capture.PNG"} alt="" />
                                 </div>
                                 <Tooltip id="my-tooltip" />
                                 <button onClick={handleSignOut} className="btn btn-xs md:btn-sm lg:btn-sm bg-[#333333] hover:bg-slate-500 text-white font-normal">Logout</button>
                             </div>
                             : <div className="flex items-center gap-2 md:gap-2 lg:gap-4">
                                 <div data-tooltip-id="my-tooltip" data-tooltip-content="No Image" data-tooltip-place="left">
-                                    <img className="rounded-full h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10 border" src="/Capture.PNG" alt="" />
+                                    <img className="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10 border-2 border-yellow-600 rounded-full " src="/Capture.PNG" alt="" />
                                 </div><Tooltip id="my-tooltip" />
                                 <div className="flex">
                                     <NavLink
@@ -147,8 +147,7 @@ const Navbar = () => {
                                 <div className="relative w-12 h-6 rounded-full mr-3 transition-all duration-300 hidden md:flex">
 
                                     <div
-                                        className={`absolute inset-0 rounded-full transition-all duration-300 ${isDarkMode ? "bg-blue-500" : "bg-stone-800"
-                                            }`}
+                                        className={`absolute inset-0 rounded-full transition-all duration-300 ${isDarkMode ? "bg-blue-500" : "bg-stone-800"}`}
                                     ></div>
 
                                     <div
