@@ -18,50 +18,50 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement :<ErrorPage></ErrorPage>,
-        children :[
-          {
-              path: "/",
-              element: <Home></Home>,
-              loader :()=> fetch('http://localhost:5000/all-categories')
-          },
-          {
-              path: "/login",
-              element: <Login></Login>,
-          },
-          {
-              path: "/register",
-              element: <Register></Register>,
-          },
-          {
-              path: "/add-book",
-              element: <PrivateRoutes><AdminPrivateRoutes><AddBook></AddBook></AdminPrivateRoutes></PrivateRoutes>,
-          },
-          {
-              path: "/all-books",
-              element: <PrivateRoutes><AdminPrivateRoutes><AllBooks></AllBooks></AdminPrivateRoutes></PrivateRoutes>,
-          },
-          {
-              path: "/borrowed-books",
-              element: <PrivateRoutes><BorrowedBooks></BorrowedBooks></PrivateRoutes>,
-          },
-          {
-              path: "/book-update/:id",
-              element: <PrivateRoutes><BookUpdatePage></BookUpdatePage></PrivateRoutes>,
-              loader : ({params}) => fetch(`http://localhost:5000/all-books/${params.id}`)
-          },
-          {
-              path: "/categorized-books/:categoryName",
-              element: <PrivateRoutes><CategorizedBooks></CategorizedBooks></PrivateRoutes>,
-              loader : ({params}) => fetch(`http://localhost:5000/categorizedBooks/${params.categoryName}`) 
-          },
-          {
-              path: "/book-details/:id",
-              element: <PrivateRoutes><BookDetailsPage></BookDetailsPage></PrivateRoutes>,
-              loader : ({params}) => fetch(`http://localhost:5000/all-books/${params.id}`)
-          },
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/all-categories')
+            },
+            {
+                path: "/login",
+                element: <Login></Login>,
+            },
+            {
+                path: "/register",
+                element: <Register></Register>,
+            },
+            {
+                path: "/add-book",
+                element: <PrivateRoutes><AdminPrivateRoutes><AddBook></AddBook></AdminPrivateRoutes></PrivateRoutes>,
+            },
+            {
+                path: "/all-books",
+                element: <PrivateRoutes><AdminPrivateRoutes><AllBooks></AllBooks></AdminPrivateRoutes></PrivateRoutes>,
+            },
+            {
+                path: "/borrowed-books",
+                element: <PrivateRoutes><BorrowedBooks></BorrowedBooks></PrivateRoutes>,
+            },
+            {
+                path: "/book-update/:id",
+                element: <PrivateRoutes><BookUpdatePage></BookUpdatePage></PrivateRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-books/${params.id}`)
+            },
+            {
+                path: "/categorized-books/:categoryName",
+                element: <PrivateRoutes><CategorizedBooks></CategorizedBooks></PrivateRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/categorizedBooks/${params.categoryName}`)
+            },
+            {
+                path: "/book-details/:id",
+                element: <PrivateRoutes><BookDetailsPage></BookDetailsPage></PrivateRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-books/${params.id}`)
+            },
         ]
-      },
-  ]);
+    },
+]);
 
 export default router;

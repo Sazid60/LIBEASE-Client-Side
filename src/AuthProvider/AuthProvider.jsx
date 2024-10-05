@@ -1,93 +1,92 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider, getAuth } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-// import auth from "../Firebase/firebase.config";
-// import useAxiosSecure from "../Hooks/useAxiosSecure";
 import app from '../Firebase/firebase.config';
 import axios from "axios";
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
-const auth = getAuth(app)
+const auth = getAuth(app);
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
-
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
-    // const axiosSecure = useAxiosSecure()
-
+    // Save theme to local storage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
     // Register User
     const createUser = (email, password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
-
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
     // User SignIn
     const logInUser = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
 
     // Google Sign In
     const googleLogin = () => {
-        setLoading(true)
-        return signInWithPopup(auth, googleProvider)
-    }
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    };
 
-    //  Github Sign In
+    // Github Sign In
     const gitHubLogin = () => {
-        setLoading(true)
-        return signInWithPopup(auth, gitHubProvider)
-    }
-    //User Update
+        setLoading(true);
+        return signInWithPopup(auth, gitHubProvider);
+    };
+
+    // User Update
     const updateUser = (name, photoUrl) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: photoUrl
-        })
-    }
+            photoURL: photoUrl,
+        });
+    };
+
     // Log out
     const signOutUser = () => {
-        setLoading(true)
-        return signOut(auth)
-    }
+        setLoading(true);
+        return signOut(auth);
+    };
 
     // Observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log("Observing : ", currentUser)
+            console.log("Observing : ", currentUser);
 
             // Token Purpose
-            const userEmail = currentUser?.email || user?.email
-            const loggedUser = {email:userEmail}
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
 
-            setUser(currentUser)
-            setLoading(false)
+            setUser(currentUser);
+            setLoading(false);
 
             // Token Issuing
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt',loggedUser, {withCredentials:true})
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
-                        console.log('Token Response :',res.data)
-                    })
+                        console.log('Token Response :', res.data);
+                    });
+            } else {
+                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    });
             }
-            else{
-                axios.post('http://localhost:5000/logout',loggedUser, {withCredentials:true})
-                .then(res=>{
-                    console.log(res.data)
-                })
-            }
-        })
+        });
         return () => {
             unsubscribe();
-        }
-    }, [user?.email])
-
+        };
+    }, [user?.email]);
 
     const authInformation = {
         user,
@@ -99,7 +98,10 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         gitHubLogin,
         setUser,
-    }
+        theme,
+        setTheme,
+    };
+
     return (
         <AuthContext.Provider value={authInformation}>
             {children}

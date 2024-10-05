@@ -8,7 +8,7 @@ import { BsMoon, BsSun } from "react-icons/bs";
 
 
 const Navbar = () => {
-    const { signOutUser, user } = useContext(AuthContext)
+    const { signOutUser, user ,theme, setTheme} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
 
 
@@ -54,7 +54,8 @@ const Navbar = () => {
     useEffect(() => {
         const theme = isDarkMode ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", theme);
-    }, [isDarkMode]);
+        setTheme(theme)
+    }, [theme,isDarkMode, setTheme]);
 
     const navLinks = <>
         <li className="mr-2">
