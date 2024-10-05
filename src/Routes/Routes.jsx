@@ -23,7 +23,7 @@ const router = createBrowserRouter([
           {
               path: "/",
               element: <Home></Home>,
-              loader :()=> fetch('https://lib-ease-server-b9-a11.vercel.app/all-categories')
+              loader :()=> fetch('http://localhost:5000/all-categories')
           },
           {
               path: "/login",
@@ -48,17 +48,17 @@ const router = createBrowserRouter([
           {
               path: "/book-update/:id",
               element: <PrivateRoutes><BookUpdatePage></BookUpdatePage></PrivateRoutes>,
-              loader : ({params}) => fetch(`https://lib-ease-server-b9-a11.vercel.app/all-books/${params.id}`)
+              loader : ({params}) => fetch(`http://localhost:5000/all-books/${params.id}`)
           },
           {
               path: "/categorized-books/:categoryName",
               element: <PrivateRoutes><CategorizedBooks></CategorizedBooks></PrivateRoutes>,
-              loader : ({params}) => fetch(`https://lib-ease-server-b9-a11.vercel.app/categorizedBooks/${params.categoryName}`) 
+              loader : ({params}) => fetch(`http://localhost:5000/categorizedBooks/${params.categoryName}`) 
           },
           {
               path: "/book-details/:id",
               element: <PrivateRoutes><BookDetailsPage></BookDetailsPage></PrivateRoutes>,
-              loader : ({params}) => fetch(`https://lib-ease-server-b9-a11.vercel.app/all-books/${params.id}`)
+              loader : ({params}) => fetch(`http://localhost:5000/all-books/${params.id}`)
           },
         ]
       },

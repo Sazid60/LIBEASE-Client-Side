@@ -14,7 +14,7 @@ import 'swiper/css/effect-fade';
 
 const Banner = () => {
     return (
-        <div className='relative bg-[url(/library-5.jpg)] bg-cover bg-center bg-no-repeat h-[160px] md:h-[300px] lg:h-[400px] w-full flex justify-center items-center rounded-xl'>
+        <div className='relative bg-[url(/library-5.jpg)] bg-cover bg-center bg-no-repeat h-[300px] md:h-[500px] lg:h-[700px] w-full px-5 mx-auto flex justify-center items-center rounded-xl'>
             <div className='absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-80 rounded-xl'></div>
             <div className='text-center text-white z-10'>
                 <h1 className=' text-2xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-5 lg:mb-10 uppercase'>Explore Knowledge</h1>

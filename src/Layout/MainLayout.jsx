@@ -3,20 +3,18 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Toaster } from "react-hot-toast";
 
-
 const MainLayout = () => {
+
     return (
-        <div className="">
-            <div className=''>
-                <Navbar></Navbar>
-                <div className='px-5 min-h-[calc(100vh-321px)]'>
-                    <Outlet></Outlet>
-                </div> 
+        <div>
+            <div className="h-16 md:h-20">
+                <Navbar />
             </div>
-            <Footer></Footer>
-            <Toaster
-                position="top-center"
-                reverseOrder={false} />
+            <div className="px-5 min-h-[calc(100vh-321px)]">
+                <Outlet />
+            </div>
+            <Footer />
+            <Toaster position="top-center" reverseOrder={false} />
         </div>
     );
 };
